@@ -1,0 +1,114 @@
+@import url(perguntas-frequentes.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#cabecalho-secundario {
+    background-color: #9C6EFE;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 120px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.barra-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    height: 65px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+#menu a {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+.perguntas-frequentes {
+    text-align: center;
+}
+
+.respostas {
+    margin-top: 15px;
+    background-color: #F2F2F2;
+    padding: 5px;
+}
+
+.perguntas {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.informacoes-pessoais {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.informacoes-pessoais caption {
+    margin-bottom: 30px; 
+}
+
+.informacoes-pessoais td {
+    border: 1px solid #ddd; /* Adicione uma borda fina a todas as células */
+    padding: 8px; /* Adapte o preenchimento conforme necessário */
+    text-align: left; /* Alinhe o texto à esquerda nas células */
+}
+
+.informacoes-pessoais td span {
+    display: block; /* Coloca o span em uma nova linha para evitar que ele influencie o alinhamento da célula */
+    text-align: right; /* Alinha o texto à direita dentro do span */
+}
+
+#rodape {
+    margin-top: 70px;
+    border-top: 2px solid #9e0fff;
+    padding: 30px;
+    background-color: #9c6efe;
+}
+
+#linha-rodape {
+    display: flex;
+    justify-content: space-between;
+}
+
+.coluna-rodape {
+    width: 25%;
+}
+
+.redes-sociais {
+    margin-top: 10px;
+}
+
+.redes-sociais a {
+    color: black;
+    font-size: 2.0em;
+}
+
+.coluna-rodape ul li {
+    margin-top: 10px;
+    list-style: none;
+    color: white;
+}
+
+.coluna-rodape h3 {
+    color: white;
+}
