@@ -8,10 +8,6 @@
         <div class="cadastroPersonal">
         <form action="#" method="post" enctype="multipart/form-data" id="profile-form">
             <div class="form-group">
-                <label for="nomePersonal">Nome do Personal:</label>
-                <input type="text" id="nomePersonal" name="nomePersonal" required>
-            </div>
-            <div class="form-group">
                 <label for="diploma">Carregar Diploma 🎓:</label>
                 <input type="file" id="diploma" name="diploma" accept=".pdf,.jpg,.jpeg,.png" required>
             </div>
@@ -22,20 +18,16 @@
             </div>
             
             <div class="form-group">
-                <label for="maisSobre">Fale Mais Sobre Você:</label>
-                <textarea id="maisSobre" name="maisSobre" rows="5" required></textarea>
+                <label for="formacoes">Formações:</label>
+                <textarea id="formacoes" name="formacoes" rows="5" required></textarea>
             </div>
             <div class="form-group">
-                <label for="price">Preço por Hora/Aula (R$):</label>
-                <input type="number" id="price" name="price" required>
+                <label for="preco">Preço por Hora/Aula (R$):</label>
+                <input type="number" id="preco" name="preco" required>
             </div>
             <div class="form-group">
-                <label for="area">Área de Atuação:</label>
-                <input type="text" id="area" name="area" required>
-            </div>
-            <div class="form-group">
-                <label for="institutions">Instituições que Pode se Locomover:</label>
-                <input type="text" id="institutions" name="institutions" required>
+                <label for="academias">Academias que Pode se Locomover:</label>
+                <input type="text" id="academias" name="academias" required>
             </div>
             <div class="form-group">
                 <button type="submit" id="submit-button">Cadastrar</button>
