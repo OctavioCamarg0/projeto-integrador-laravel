@@ -2,6 +2,27 @@
 
 @section('conteudo')
 
+<!-- Exibe mensagens de sucesso -->
+@if(session('success'))
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
+@endif
+
+<!-- Exibe mensagens de erro -->
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+
+
+
         <section id="secao-personal">
             <div class="lista-card-personal">
                 <div class="bloco-personal">

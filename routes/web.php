@@ -3,14 +3,19 @@
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CadastroController;
 
-Route::get('/', function () {
-    return view('index');
-});
+// HOME
+Route::get('/', function () {return view('index');})->name('index');
 
-Route::get ('/cadastro', function(){
-    return view('cadastro');
-});
+
+//ROTAS DO CADASTRO NORMAL
+Route::get('/cadastro', function () {return view('cadastro');});
+Route::get('/cadastroForm', [CadastroController::class, 'create'])->name('cadastro.create');
+Route::post('/cadastro', [CadastroController::class, 'store'])->name('cadastro.store');
+
+
+
 
 Route::get ('/sobre-nos', function(){
     return view('sobreNos');

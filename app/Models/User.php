@@ -12,18 +12,24 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Atributos que podem ser preenchidos em massa.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
+    protected $fillable = [         
+
+        'nome',         
+        'sobrenome',    
+        'sexo',         
+        'telefone',     
         'email',
         'password',
+        'data_nascimento', 
+        'cpf',              
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Atributos que devem ser ocultados ao serializar para arrays ou JSON.
      *
      * @var array<int, string>
      */
@@ -33,7 +39,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Tipos de atributos do modelo.
      *
      * @return array<string, string>
      */
@@ -42,6 +48,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'data_nascimento' => 'date',  
         ];
     }
 }
