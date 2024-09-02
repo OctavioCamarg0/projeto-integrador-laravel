@@ -757,90 +757,64 @@ h2 {
 }
 /* Página Meu Perfil */
 
-.perfil-e-agendamento {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.area-informacoes-meu-perfil {
-    border-radius: 20px;
+.perfil-visualizacao {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 45%;
-    margin: 20px 0;
-    background-color: #E2D7FA;
-    padding: 30px;
+    gap: 20px;
 }
 
-.titulo-informacoes-meu-perfil {
-    border-radius: 10px;
-    padding: 7px 15px;
-    color: #000000;
+.informacoes-perfil, .informacoes-personal-trainer {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.titulo-informacoes, .titulo-aulas {
     margin-bottom: 20px;
 }
 
-.area-informacoes-meu-perfil form { 
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.conteudo-informacoes p, .conteudo-personal p {
+    font-size: 16px;
+    margin: 10px 0;
 }
 
-.area-informacoes-meu-perfil input, .area-informacoes-meu-perfil select {
-    border-radius: 10px;
-    width: 100%;
-    padding: 15px;
-    border: none;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    background-color: #F2F2F2;
-}
-
-#botao-atualizar{
-    cursor: pointer;
+.botao {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
     margin-top: 20px;
-    border: none;
-    color: white;
-    border-radius: 10px;
-    padding: 20px 50px;
-    background-color: #b9a0f0;
+    background-color: #007bff;
+    text-align: center;
 }
 
-.area-aulas-agendadas {
-    width: 45%;
-    background-color: #E2D7FA;
-    padding: 30px;
-    border-radius: 20px;
+.botao-editar:hover {
+    background-color: #0056b3;
 }
 
-.titulo-aulas-agendadas {
-    border-radius: 10px;
-    padding: 7px 15px;
-    color: #000000;
-    margin-bottom: 20px;
+.academias-disponiveis ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.area-aulas-agendadas table {
+.academias-disponiveis ul li {
+    margin-bottom: 5px;
+}
+
+.tabela-aulas {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.area-aulas-agendadas th, .area-aulas-agendadas td {
-    padding: 12px;
+.tabela-aulas th, .tabela-aulas td {
+    padding: 10px;
+    border: 1px solid #ddd;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
-.area-aulas-agendadas th {
-    background-color: #b9a0f0;
-    color: white;
-}
-
-.area-aulas-agendadas tbody tr:hover {
-    background-color: #f1f1f1;
-}
 
 #menu-meu-perfil {
     display: flex;
@@ -923,3 +897,22 @@ h2 {
 .form-group button:hover {
     background-color: #7a4fc3;
 }
+
+/* Estilo para o grupo de checkboxes */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte se necessário */
+    gap: 10px; /* Espaçamento entre os itens */
+}
+
+/* Estilo para cada item de checkbox */
+.checkbox-item {
+    display: flex;
+    align-items: center; /* Alinha verticalmente o checkbox e o rótulo */
+}
+
+/* Estilo para o rótulo do checkbox */
+.checkbox-item label {
+    margin-left: 5px; /* Espaçamento entre o checkbox e o rótulo */
+}
+

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,17 +18,17 @@
         <div class="container">
             <div class="barra-topo">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="img/logo-branca.png" alt="encontre seu personal" id="logo-img">
+                    <a href="{{asset('/')}}">
+                        <img src="{{asset('img/logo-branca.png')}}" alt="encontre seu personal" id="logo-img">
                     </a>
                 </div>
                 <div id="menu-meu-perfil">
                     <a href="perguntas-frequentes.html" id="a-perguntas-frequentes"><i class="fa-regular fa-circle-question"></i></a>
-                    <a href="cadastro-personal.html" class="cadastro-personal-pag-meu-perfil">Cadastrar-se como Personal</a>
+                    <a href="{{route('cadastro_personal.create')}}" class="cadastro-personal-pag-meu-perfil">Cadastrar-se como Personal</a>
                     <div class="foto-perfil">
 
-                        <a href="meu-perfil-usuario.html" class="aaa">
-                            <img src="img/foto-perfil-personal.jpg" alt="Foto de Perfil" width="70">
+                        <a href="{{ route('meuPerfilUsuario.show', ['id' => 1]) }}" class="aaa">
+                            <img src="{{asset('img/foto-perfil-personal.jpg')}}" alt="Foto de Perfil" width="70">
                         </a>
                     </div>
                 </div>

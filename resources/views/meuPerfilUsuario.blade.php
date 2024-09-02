@@ -2,73 +2,70 @@
 
 @section('conteudo')
 
-<div class="perfil-e-agendamento">
-            <div class="area-informacoes-meu-perfil">
-                <div class="titulo-informacoes-meu-perfil">
-                    <h1>Minhas Informações</h1>
-                </div>
-                <form action="#" method="post">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
-
-                    <label for="sobrenome">Sobrenome:</label>
-                    <input type="text" id="sobrenome" name="sobrenome" required>
-
-                    <label for="sexo">Gênero:</label>
-                    <select id="sexo" name="sexo" required>
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                        <option value="outro">Outro</option>
-                    </select>
-
-                    <label for="telefone">Telefone:</label>
-                    <input type="tel" id="telefone" name="telefone" required>
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" required>
-
-                    <label for="confirmaSenha">Confirmação de Senha:</label>
-                    <input type="password" id="confirmaSenha" name="confirmaSenha" required>
-
-                    <label for="dataNascimento">Data de Nascimento:</label>
-                    <input type="date" id="dataNascimento" name="dataNascimento" required>
-
-                    <label for="cpf">CPF:</label>
-                    <input type="text" id="cpf" name="cpf" required>
-
-                    <button type="submit" id="botao-atualizar">ATUALIZAR</button>
-                </form>
-            </div>
-            <div class="area-aulas-agendadas">
-                <div class="titulo-aulas-agendadas">
-                    <h1>Aulas Agendadas</h1>
-                </div>
-                <table id="tabela-aulas">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Hora</th>
-                            <th>Descrição</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>25/06/2024</td>
-                            <td>10:00</td>
-                            <td>Aula de Yoga</td>
-                        </tr>
-                        <tr>
-                            <td>26/06/2024</td>
-                            <td>14:00</td>
-                            <td>Aula de Pilates</td>
-                        </tr>
-                        <!-- Adicione mais linhas conforme necessário -->
-                    </tbody>
-                </table>
-            </div>
+<div class="perfil-visualizacao">
+    <div class="informacoes-perfil">
+        <div class="titulo-informacoes">
+            <h1>Minhas Informações</h1>
         </div>
+        <div class="conteudo-informacoes">
+            <p><strong>Nome:</strong> João Silva</p>
+            <p><strong>Sobrenome:</strong> Souza</p>
+            <p><strong>Gênero:</strong> Masculino</p>
+            <p><strong>Telefone:</strong> (11) 99999-9999</p>
+            <p><strong>Email:</strong> joao.silva@example.com</p>
+            <p><strong>Data de Nascimento:</strong> 01/01/1985</p>
+            <p><strong>CPF:</strong> 123.456.789-00</p>
+            <a href="/user/1/edit" class="botao botao-editar">Editar Informações</a>
+        </div>
+    </div>
 
-        @endsection
+    @if ($personal != null)
+
+    <div class="informacoes-personal-trainer">
+        <h1>Informações do Personal Trainer</h1>
+        <div class="conteudo-personal">
+            <p><strong>Número do CREF:</strong> {{$personal->cref}}</p>
+            <p><strong>Formações:</strong> {{$personal->formacoes}}</p>
+            <p><strong>Preço por Hora/Aula (R$):</strong> {{$personal->preco}}</p>
+            <div class="academias-disponiveis">
+                <label>Academias que Pode se Locomover:</label>
+                <ul>
+                    @foreach ($academias_personal as $academia)
+                        <li>{{$academia->academia}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <a href="{{route('editar-personal.edit', ['id' => $personal->id])}}" class="botao botao-editar">Editar Personal Trainer</a>
+        </div>
+    </div>
+    @endif
+
+    <div class="aulas-agendadas">
+        <div class="titulo-aulas">
+            <h1>Aulas Agendadas</h1>
+        </div>
+        <table class="tabela-aulas">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>25/06/2024</td>
+                    <td>10:00</td>
+                    <td>Aula de Yoga</td>
+                </tr>
+                <tr>
+                    <td>26/06/2024</td>
+                    <td>14:00</td>
+                    <td>Aula de Pilates</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@endsection
