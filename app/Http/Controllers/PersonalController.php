@@ -4,23 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Personal;
+use App\Models\Academia;
+use App\Models\Personais_academia;
 
-class CadastroPersonalController extends Controller
+class PersonalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('meuPerfilUsuario');
+        $academias = Academia::all();
+        return view('meuPerfilUsuario', [
+            'academias' => $academias
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('cadastro-personal');
+    {   
+        $academias = Academia::all();
+        return view('cadastro-personal', [
+            'academias' => $academias
+        ]);
+
     }
 
     /**
@@ -32,16 +41,26 @@ class CadastroPersonalController extends Controller
             'diploma' => 'required',
             'cref' => 'required',
             'formacoes' => 'required',
-            'preco' => 'reuqired',
-            'academias' => 'required'
+            'preco' => 'required',
+            'academias' => 'required',
         ]);
 
         Personal::create([
            'diploma' => $request->diploma,
            'cref' => $request->cref,
            'formacoes' => $request->formacoes,
-           'preco' => $request->preco
+           'preco' => $request->preco,
+           'usuario_id' => 1
         ]);
+
+        foreach ($request->academias as $academia){
+            Personais_academia::create([
+            'personal_id' => 1,
+            'academia_id' => $academia
+            ]);
+        }
+
+        return view('meuPerfilUsuario');
     }
 
     /**
@@ -49,7 +68,12 @@ class CadastroPersonalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $personal = Personal::find(1);
+        $academias_personal = $personal->academias;
+        return view('meuPerfilUsuario',[
+            'personal' => $personal, 
+            'academias_personal' => $academias_personal
+        ]);
     }
 
     /**
@@ -57,7 +81,14 @@ class CadastroPersonalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $personal = Personal::find(1);
+        $academias_personal = $personal->academias;
+        $academias = Academia::all();
+        return view('editar-personal', [
+            'personal' => $personal,
+            'academias_personal' => $academias_personal,
+            'academias' => $academias  
+        ]);
     }
 
     /**
@@ -65,7 +96,26 @@ class CadastroPersonalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $personal = Personal::find($id);
+
+        $request->validate([
+            'diploma' => 'required',
+            'cref' => 'required',
+            'formacoes' => 'required',
+            'preco' => 'required',
+            'academias' => 'required',
+        ]);
+
+        $personal->update($request->all());
+        $selectedAcademias = $request->input('academias', []);
+
+        // Sincroniza as academias associadas ao personal com as academias selecionadas
+        $personal->academias()->sync($selectedAcademias);
+
+        // Salva outras alterações, se necessário
+        return redirect()->route('meuPerfilUsuario.show', $id)->with('success', 'Dados atualizados com sucesso!');
+
     }
 
     /**

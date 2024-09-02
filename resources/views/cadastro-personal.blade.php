@@ -6,7 +6,8 @@
             <h1>Cadastro de Personal Trainer</h1>
         </div>
         <div class="cadastroPersonal">
-        <form action="#" method="post" enctype="multipart/form-data" id="profile-form">
+        <form action="{{ route('cadastro_personal.store')}} " method="post" enctype="multipart/form-data" id="profile-form">
+            @csrf
             <div class="form-group">
                 <label for="diploma">Carregar Diploma 🎓:</label>
                 <input type="file" id="diploma" name="diploma" accept=".pdf,.jpg,.jpeg,.png" required>
@@ -26,9 +27,16 @@
                 <input type="number" id="preco" name="preco" required>
             </div>
             <div class="form-group">
-                <label for="academias">Academias que Pode se Locomover:</label>
-                <input type="text" id="academias" name="academias" required>
+    <label for="academias">Academias que Pode se Locomover:</label>
+    <div class="checkbox-group">
+        @foreach ($academias as $academia)
+            <div class="checkbox-item">
+                <input type="checkbox" id="academia_{{ $academia->id }}" name="academias[]" value="{{ $academia->id }}">
+                <label for="academia_{{ $academia->id }}">{{ $academia->academia }}</label>
             </div>
+        @endforeach
+    </div>
+</div>
             <div class="form-group">
                 <button type="submit" id="submit-button">Cadastrar</button>
             </div>
