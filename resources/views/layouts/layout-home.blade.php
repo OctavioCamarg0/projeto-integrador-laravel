@@ -23,7 +23,7 @@
                 <div id="menu">
                     <a href="{{asset('perguntas-frequentes')}}"><i class="fa-regular fa-circle-question"></i></a></li>
                     <a href="{{asset('cadastro')}}">Cadastrar-se</a></li>
-                    <a href="{{asset('login')}}">Login</a></li>
+                    <a href="{{route('login.form')}}">Login</a></li>
                 </div>
             </div>
             <div id="form-pesquisa">

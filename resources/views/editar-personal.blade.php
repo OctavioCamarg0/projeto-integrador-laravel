@@ -8,6 +8,7 @@
         <div class="cadastroPersonal">
         <form action="{{ route('editar-personal.update', ['id' => $personal->id])}} " method="post" enctype="multipart/form-data" id="profile-form">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <label for="diploma">Carregar Diploma 🎓:</label>
                 <input type="file" id="diploma" name="diploma" accept=".pdf,.jpg,.jpeg,.png" value="{{ old('diploma', $personal->diploma)}}" required>

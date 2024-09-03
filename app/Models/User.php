@@ -51,4 +51,8 @@ class User extends Authenticatable
             'data_nascimento' => 'date',  
         ];
     }
+
+    public function personal() {
+        return $this->hasOne(Personal::class);
+    }
 }

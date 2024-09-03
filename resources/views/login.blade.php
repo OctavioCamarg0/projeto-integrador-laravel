@@ -3,9 +3,19 @@
 @section('conteudo')
     
     <div class="area-login">
-        <form action="#" method="post">
+                @if ($errors->any())
+                    <div class='alert alert-danger'>
+                        <ul class='list-unstyled'>
+                            @foreach ($errors->all() as $erro)
+                                <li>{{$erro}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+        <form action="{{ route("login") }}" method="post">
+            @csrf
             <input type="e-mail" name="email" id="email" placeholder="E-mail">
-            <input type="password" name="senha" id="senha" placeholder="Senha">
+            <input type="password" name="password" id="senha" placeholder="Senha">
             <button type="submit" id="botao-login">Conectar-se</button>
         </form>
         <div class="botoes-cadastro">

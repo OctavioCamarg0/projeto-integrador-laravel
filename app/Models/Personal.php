@@ -16,10 +16,14 @@ class Personal extends Model
         'cref',
         'formacoes',
         'preco',
-        'usuario_id'
+        'user_id'
     ];
 
     public function academias () {
         return $this->belongsToMany(Academia::class, 'personais_academias', 'personal_id', 'academia_id');
+    }
+
+    public function usuario() {
+        return $this->belongsTo(User::class);
     }
 }

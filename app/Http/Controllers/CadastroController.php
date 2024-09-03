@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
  
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
  
 class CadastroController extends Controller
 {
@@ -47,6 +48,23 @@ class CadastroController extends Controller
  
         // Redireciona para uma página de sucesso
         return redirect()->route('index')->with('success', 'Cadastro realizado com sucesso!');
+    }
+
+    public function show () {
+        $usuario = Auth::user();
+        if ($usuario->personal) {
+            $personal = $usuario->personal;
+            $academias_personal = $personal->academias;
+        }
+        else{
+            $personal = null;
+            $academias_personal = null;
+        }
+        return view('meuPerfilUsuario',[
+            'usuario' => $usuario,
+            'personal' => $personal,
+            'academias_personal' => $academias_personal
+        ]);
     }
 }
  

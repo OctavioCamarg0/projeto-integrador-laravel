@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Personal;
 use App\Models\Academia;
 use App\Models\Personais_academia;
+use Illuminate\Support\Facades\Auth;
+
 
 class PersonalController extends Controller
 {
@@ -14,6 +16,7 @@ class PersonalController extends Controller
      */
     public function index()
     {
+        dd(Auth::user());
         $academias = Academia::all();
         return view('meuPerfilUsuario', [
             'academias' => $academias
@@ -50,12 +53,14 @@ class PersonalController extends Controller
            'cref' => $request->cref,
            'formacoes' => $request->formacoes,
            'preco' => $request->preco,
-           'usuario_id' => 1
+           'user_id' => Auth::user()->id
         ]);
+        $personal = Personal::where('user_id', Auth::user()->id)->first();
+        $personalId = $personal->id;
 
         foreach ($request->academias as $academia){
             Personais_academia::create([
-            'personal_id' => 1,
+            'personal_id' => $personalId,
             'academia_id' => $academia
             ]);
         }
@@ -64,24 +69,11 @@ class PersonalController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $personal = Personal::find(1);
-        $academias_personal = $personal->academias;
-        return view('meuPerfilUsuario',[
-            'personal' => $personal, 
-            'academias_personal' => $academias_personal
-        ]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        $personal = Personal::find(1);
+        $personal = Personal::find($id);
         $academias_personal = $personal->academias;
         $academias = Academia::all();
         return view('editar-personal', [

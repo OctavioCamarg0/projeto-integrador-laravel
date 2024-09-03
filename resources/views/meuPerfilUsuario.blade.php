@@ -8,13 +8,13 @@
             <h1>Minhas Informações</h1>
         </div>
         <div class="conteudo-informacoes">
-            <p><strong>Nome:</strong> João Silva</p>
-            <p><strong>Sobrenome:</strong> Souza</p>
-            <p><strong>Gênero:</strong> Masculino</p>
-            <p><strong>Telefone:</strong> (11) 99999-9999</p>
-            <p><strong>Email:</strong> joao.silva@example.com</p>
-            <p><strong>Data de Nascimento:</strong> 01/01/1985</p>
-            <p><strong>CPF:</strong> 123.456.789-00</p>
+            <p><strong>Nome:</strong> {{$usuario->nome}}</p>
+            <p><strong>Sobrenome:</strong> {{$usuario->sobrenome}}</p>
+            <p><strong>Gênero:</strong> {{$usuario->sexo}}</p>
+            <p><strong>Telefone:</strong> {{$usuario->telefone}}</p>
+            <p><strong>Email:</strong> {{$usuario->email}}</p>
+            <p><strong>Data de Nascimento:</strong> {{$usuario->data_nascimento}}</p>
+            <p><strong>CPF:</strong> {{$usuario->cpf}}</p>
             <a href="/user/1/edit" class="botao botao-editar">Editar Informações</a>
         </div>
     </div>

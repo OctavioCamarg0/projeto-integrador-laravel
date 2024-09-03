@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('cref', 11);
             $table->text('formacoes');
             $table->decimal('preco', 8, 2);
-            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('user_id');
 
             //constraint relacionamento personais com usuario
-            $table->foreign('usuario_id')->references('id')->on('users');
-            $table->unique('usuario_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unique('user_id');
         });
     }
 
