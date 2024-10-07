@@ -24,10 +24,28 @@
                     </a>
                 </div>
                 <div id="menu">
-                    <a href="{{asset('perguntas-frequentes')}}"><i class="fa-regular fa-circle-question"></i></a></li>
-                    <a href="{{asset('cadastro')}}">Cadastrar-se</a></li>
-                    <a href="{{asset('login')}}">Login</a></li>
+                    @guest
+                        <a href="{{asset('perguntas-frequentes')}}"><i class="fa-regular fa-circle-question"></i></a></li>
+                        <a href="{{route('cadastro.create')}}">Cadastrar-se</a></li>
+                        <a href="{{asset('login')}}">Login</a></li>
+                    @endguest
                 </div>
+                    @auth
+                    <div id="menu-meu-perfil">
+                        <a href="{{asset('perguntas-frequentes')}}"><i class="fa-regular fa-circle-question" id="perguntas-frequentes"></i></a></li>
+                        <?php $usuario = Auth::user(); ?>
+                        @if ($usuario->personal == null)
+                            <a href="{{route('cadastro_personal.create')}}" class="cadastro-personal-pag-meu-perfil">Cadastrar-se como Personal</a>
+                        @endif
+                        <div class="foto-perfil">
+    
+                            <a href="{{ route('meuPerfilUsuario.show', ['id' => 1]) }}" class="aaaaaa">
+                                <img src="{{asset('img/foto-perfil-personal.jpg')}}" alt="Foto de Perfil" width="70">
+                            </a>
+                        </div>
+                        <a href="{{route('logout')}}" class="botao-sair"><strong>SAIR</strong></a>
+                    </div>
+                    @endauth
             </div>
         </div>
     </header>

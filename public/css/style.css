@@ -916,3 +916,26 @@ h2 {
     margin-left: 5px; /* Espaçamento entre o checkbox e o rótulo */
 }
 
+.botao-sair {
+    background-color: white;
+    padding: 10px 25px;
+    border-radius: 20px;
+    margin-left: 5px;
+    color: #9C6EFE;
+}
+
+#perguntas-frequentes {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+.imagem-verificado img {
+    width: 40px;
+}
+
+.imagem-verificado h2 {
+    margin-top: 20px;
+    margin-bottom: 0px;
+}

@@ -22,7 +22,7 @@ class AutenticacaoController extends Controller
             return redirect()->intended("meuPerfilUsuario");
         }
 
-        return redirect()->back()->withErrors(['email'=>'Usuário ou Senha inválidos                                                                                                                                                                                                                                                                                                                                                                                                     ']);
+        return redirect()->back()->withErrors(['email'=>'Usuário ou Senha inválidos']);
     }
 
     public function logout(Request $request) {

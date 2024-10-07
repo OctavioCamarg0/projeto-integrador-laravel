@@ -1,4 +1,4 @@
-@extends('layouts.layout-interno-secundario')
+@extends('layouts.layout-interno')
 
 @section('conteudo')
 
@@ -22,6 +22,16 @@
     @if ($personal != null)
 
     <div class="informacoes-personal-trainer">
+        @if (session('sucesso'))
+            <div class="alert alert-success">
+                {{ session('sucesso') }}
+            </div>
+            @endif
+            @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <h1>Informações do Personal Trainer</h1>
         <div class="conteudo-personal">
             <p><strong>Número do CREF:</strong> {{$personal->cref}}</p>
@@ -36,6 +46,11 @@
                 </ul>
             </div>
             <a href="{{route('editar-personal.edit', ['id' => $personal->id])}}" class="botao botao-editar">Editar Personal Trainer</a>
+            <form action="{{route('personal.destroy', ['id' => $personal->id])}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')" class="botao botao-editar">Excluir</button>
+            </form>
         </div>
     </div>
     @endif

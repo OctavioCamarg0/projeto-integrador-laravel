@@ -11,23 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PersonalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        dd(Auth::user());
-        $academias = Academia::all();
-        return view('meuPerfilUsuario', [
-            'academias' => $academias
-        ]);
-    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {   
+    {
         $academias = Academia::all();
         return view('cadastro-personal', [
             'academias' => $academias
@@ -65,7 +54,7 @@ class PersonalController extends Controller
             ]);
         }
 
-        return view('meuPerfilUsuario');
+        return redirect()->route('meuPerfilUsuario.show');
     }
 
     /**
@@ -115,6 +104,13 @@ class PersonalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $personal = Personal::findOrFail($id);
+            $personal->academias()->detach();
+            $personal->delete();
+            return redirect()->route('meuPerfilUsuario.show')->with('sucesso','Personal deletado com sucesso!');;
+        } catch (\exception $e) {
+            return redirect()->route('meuPerfilUsuario.show')->with('error','Erro ao Deletar Personal!');;
+        }
     }
 }

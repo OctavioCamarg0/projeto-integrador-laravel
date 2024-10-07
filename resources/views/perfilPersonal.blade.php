@@ -1,23 +1,11 @@
 @extends('layouts.layout-interno')
 
 @section('conteudo')
-
-        <div class="tags">
-            <ul>
-                <li>Tags</li>
-                <li>Tags</li>
-                <li>Tags</li>
-                <li>Tags</li>
-                <li>Tags</li>
-            </ul>
-        </div>
-
-
         <div class="bloco-pefil-personal">
             <div class="card-perfil">
                 <div class="foto-perfil-personal">
-                    <img src="img/foto-perfil-personal.jpg" alt="Pesonal trainer" width="155">
-                    <h2>Nome do Personal</h2>
+                    <img src='{{asset("img/foto-perfil-personal.jpg")}}' alt="Pesonal trainer" width="155">
+                    <h2>{{$usuario->nome}} {{$usuario->sobrenome}}</h2>
                 </div>
                 <div class="avaliacao-perfil-personal">
                     <i class="fa-regular fa-star"></i>
@@ -28,7 +16,7 @@
                     <tbody>
                         <tr>
                             <td>Preço hora/aula:</td>
-                            <td><span>R$X</span></td>
+                            <td><span>R${{$usuario->personal->preco}}</span></td>
                         </tr>
 
                         <tr>
@@ -55,13 +43,12 @@
                 <li><i class="fa-solid fa-location-dot"></i> Localizações das Academias: X</li>
                 <li><i class="fa-solid fa-video"></i><a href="index.html"> Tipo da aula: Online/Presencial</a></li><br class="remove">
                 <br class="remove">
-                <li><i class="fa-regular fa-map ultima-li"></i> Quantos KM o professor se desloca: se desloca a (X) KM</li>
             </ul>
         </div>
 
         <div class="oque-e-verificado">
             <div class="imagem-verificado">
-                <img src="img/verificado.png" alt="Simbolo de Verificado" width="75">
+                <img src='{{asset("img/verificado.png")}}' alt="Simbolo de Verificado" width="75">
                 <h2>VERIFICADO</h2>
             </div>
             <div class="texto-verificado">
@@ -71,14 +58,8 @@
         </div>
 
         <div class="mais-sobre-personal">
-            <h2>Mais sobre (Nome do Personal)</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil quibusdam eius dolore sapiente molestiae
-                explicabo inventore nam fugiat, necessitatibus consequatur nesciunt! Saepe eveniet qui culpa unde
-                perferendis rerum eligendi cumque.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error, perferendis sapiente tempore enim nobis
-                architecto magni illum asperiores dolorem magnam eos provident mollitia quae repellat unde alias dolore
-                deserunt corporis.
-            </p>
+            <h2>Mais sobre ({{$usuario->nome}} {{$usuario->sobrenome}})</h2>
+            <p>{{$usuario->personal->formacoes}}</p>
         </div>
 
         <div class="sobre-aula">
@@ -86,13 +67,7 @@
             <ul>
                 <li><i class="fa-regular fa-flag"></i> Português | Inglês</li>
             </ul>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos, corporis. Hic quasi soluta qui ex
-                eligendi totam mollitia dolores eum officia autem, necessitatibus sequi fugit commodi doloribus
-                veritatis tempore. Aut?<br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium qui quibusdam ipsa, tempora
-                nesciunt itaque nemo nulla iste at quod sapiente deserunt soluta id. Et laudantium asperiores
-                necessitatibus omnis sed.
-            </p>
+            <p>{{($usuario->personal->sobreAula)}}</p>
 
         </div>
 

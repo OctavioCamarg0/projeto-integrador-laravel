@@ -1,4 +1,4 @@
-@extends('layouts.layout-interno-secundario')
+@extends('layouts.layout-interno')
 
 @section('conteudo')
 
