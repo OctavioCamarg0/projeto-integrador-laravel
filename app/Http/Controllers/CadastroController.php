@@ -24,6 +24,7 @@ class CadastroController extends Controller
     {
         // Validação dos dados
         $validatedData = $request->validate([
+            'imagem' => 'required',
             'nome' => 'required|string|max:255',
             'sobrenome' => 'required|string|max:255',
             'sexo' => 'required|string',
@@ -33,6 +34,8 @@ class CadastroController extends Controller
             'dataNascimento' => 'required|date',
             'cpf' => 'required|string|max:14|unique:users,cpf',
         ]);
+
+        $caminhoFoto = $request->file('imagem')->store('fotos','public');
  
         // Criação do usuário
         $user = new User();
@@ -44,6 +47,7 @@ class CadastroController extends Controller
         $user->password = bcrypt($request->senha);
         $user->data_nascimento = $request->dataNascimento;
         $user->cpf = $request->cpf;
+        $user->imagem = $caminhoFoto;
         $user->save();
  
         // Redireciona para uma página de sucesso

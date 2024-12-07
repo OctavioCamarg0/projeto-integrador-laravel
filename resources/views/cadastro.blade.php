@@ -25,8 +25,12 @@
             </div>
         @endif
 
-        <form action="{{ route('cadastro.store') }}" method="post">
+        <form action="{{ route('cadastro.store') }}" method="post" enctype="multipart/form-data">
             @csrf
+
+            <label for="imagem">Imagem de Perfil:</label>
+            <input type="file" id="imagem" name="imagem" required>
+
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" value="{{ old('nome') }}" required>
 
