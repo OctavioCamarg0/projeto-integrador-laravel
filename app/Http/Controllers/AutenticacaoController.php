@@ -18,8 +18,23 @@ class AutenticacaoController extends Controller
         ]);
 
         if(Auth::attempt($dadosUsuario)){
+
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => 'Login realizado com sucesso!',
+                    'nome' => Auth::user()->nome,
+                    'eamil' => Auth::user()->email,
+                    'token' => $request->user()->createToken('api_token')->plainTextToken
+                ], 200);
+            }
+
             $request->session()->regenerate();
+
             return redirect()->intended("meuPerfilUsuario");
+        }
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Usuario ou senha invalida'], 401);
         }
 
         return redirect()->back()->withErrors(['email'=>'Usuário ou Senha inválidos']);
@@ -29,6 +44,11 @@ class AutenticacaoController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
+        if ($request->expectsJson()) {
+            return response()->json(['message' => 'Logout realizado com sucesso!'], 200);
+        }
+
         return redirect("/");
     }
 }
